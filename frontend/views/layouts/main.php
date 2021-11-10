@@ -47,6 +47,8 @@ AppAsset::register($this);
             ['label' => 'Home', 'url' => ['/site/index'] , 'style'=> 'font-size: 17px'],
             ['label' => 'Avaria', 'url' => ['/site/about']],
             ['label' => 'Histórico', 'url' => ['/site/contact']],
+            ['label' => 'Listagem', 'url' => ['/site/listagemavarias']],
+            ['label' => 'Estatisticas', 'url' => ['/site/estatistica']],
         ];
         $menuItems[] = '<ul class="navbar-nav ml-auto"><li class="nav-item">'
             . Html::beginForm(['/site/logout'], 'post', ['class' => 'form-inline'])
