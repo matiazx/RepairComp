@@ -40,7 +40,11 @@ use yii\captcha\Captcha;
                         <?php
                         {
                             echo '<table class="table table-striped">'
-                                .'<tr>' .'<th>' . "Avarias" . '</th>'
+                                .'<tr>'
+                                .'<th>' . "Equipamento" . '</th>'
+                                .'<th>' . "Referência" . '</th>'
+                               
+                                .'<th>' . "Avarias" . '</th>'
                                 .'<th>' . "Estado" . '</th>'
 
                                 . '</tr>'
