@@ -15,27 +15,27 @@
     <div class="header">
         <ul>
             <li>
-                <a href="services.html" class="figure"><img src="images/tablet.jpg" alt=""></a>
+                <a class="figure"><img src="images/tablet.jpg" alt=""></a>
                 <div>
-                    <h3><a href="booking.html">Pedido de Assistencia</a></h3>
+                    <h3>Pedido de Assistencia</h3>
                     <p>
                         Regista o teu pedido aqui e o nossos tecnisco entraram em contacto consigo no mesmo dia.
                     </p>
                 </div>
             </li>
             <li>
-                <a href="services.html" class="figure"><img src="images/service.png" alt=""></a>
+                <a  class="figure"><img src="images/service.png" alt=""></a>
                 <div>
-                    <h3><a href="services.html">Soluções Interegrais</a></h3>
+                    <h3>Soluções Interegrais</h3>
                     <p>
                         Adaptamos os nossos serviços de manutenção em função do objetivo pretendido e de acordo com as necessidades e requisitos de cada cliente.
                     </p>
                 </div>
             </li>
             <li>
-                <a href="services.html" class="figure"><img src="images/warranty.png" alt=""></a>
+                <a class="figure"><img src="images/warranty.png" alt=""></a>
                 <div>
-                    <h3><a href="booking.html">Tecnicos Qualificados </a></h3>
+                    <h3>Tecnicos Qualificados </h3>
                     <p>
                         Contamos com uma equipa de excelência constituida de tecnicos qualificados em diversas áreas.
                     </p>
@@ -51,7 +51,7 @@
             <p>
                 Solicite aqui o seu pedido de assisntencia
             </p>
-            <a href="about.php">Pedir Assistencia</a>
+            <a href="index.php?r=site%2Fabout">Pedir Assistencia</a>
         </div>
     </div>
 
