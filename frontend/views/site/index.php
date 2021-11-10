@@ -19,7 +19,7 @@
                 <div>
                     <h3><a href="booking.html">Pedido de Assistencia</a></h3>
                     <p>
-                        Regista o teu pedido aqui e o nossos tecnisco entraram em contacto consigo no mesmo dia.
+                        Regista o teu pedido aqui e o nossos tecnisco entraram em contacto consigo no mesmo dia.teste
                     </p>
                 </div>
             </li>
