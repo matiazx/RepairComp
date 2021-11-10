@@ -44,7 +44,7 @@
         </ul>
     </div>
     <div class="body">
-         <img src="images/reparacao.jpg" width="450" height="400" >
+        <img src="images/reparacao.jpg" width="450" height="400" >
 
         <div>
             <h1>Repair Comp<span></span></h1>
@@ -116,9 +116,9 @@
             </ul>
         </div>
 
-    <div >
-        <a href="index.php" class="logo"><img  src="images/logop.png" alt=""></a>
-    </div>
+        <div >
+            <a href="index.php" class="logo"><img  src="images/logop.png" alt=""></a>
+        </div>
 
 
         <div class="connect">
