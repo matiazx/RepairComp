@@ -44,7 +44,7 @@
         </ul>
     </div>
     <div class="body">
-         <img src="images/reparacao.jpg" width="450" height="400" >
+        <img src="images/reparacao.jpg" width="450" height="400" >
 
         <div>
             <h1>Repair Comp<span></span></h1>
@@ -110,14 +110,23 @@
                 <li>
                     <b>Fax:</b> <span>934-889-313</span>
                 </li>
-               
+                <li>
+                    <b>Email:</b> <span>repaircomp@gmial.com</span>
+                </li>
             </ul>
+        </div>
+
+        <div >
+            <a href="index.php" class="logo"><img  src="images/logop.png" alt=""></a>
         </div>
 
 
         <div class="connect">
+            <h3>Ajuda e suporte:</h3>
+            <p>
+                suportrepaircomp@gmail.com
+            </p>
             <h3>Redes Sociais</h3>
-
             <ul>
                 <li id="facebook">
                     <a href="">facebook</a>
@@ -129,17 +138,6 @@
                     <a href="">googleplus</a>
                 </li>
             </ul>
-        </div>
-        <div class="connect">
-            <a href="index.php" class="logo"><img  src="images/logop.png" alt=""></a>
-        </div>
-        <div class="connect">
-            <h3>Ajuda e suporte:</h3>
-            <p>
-                suportrepaircomp@gmail.com
-            </p>
-
-
         </div>
     </div>
 

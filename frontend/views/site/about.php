@@ -7,15 +7,15 @@ use yii\helpers\Html;
 
 ?>
 <!DOCTYPE HTML>
-<!-- Website Template by freewebsitetemplates.com -->
+
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>About - Car Repair Shop Website Template</title>
+    <title>Avaria</title>
     <link rel="stylesheet" href="css/style.css" type="text/css">
-    <!--[if lt IE 9]>
+
     <link rel="stylesheet" type="text/css" href="css/ie.css">
-    <![endif]-->
+
 </head>
 <body>
 
