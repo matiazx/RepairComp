@@ -36,6 +36,26 @@ use yii\captcha\Captcha;
                     <label for="email"> <span>Referência</span>
                         <input type="text" name="referencia" id="referencia">
                     </label>
+                    <table  class="table table-striped">
+                        <?php
+                        {
+                            echo '<table class="table table-striped">'
+                                .'<tr>' .'<th>' . "Avarias" . '</th>'
+                                .'<th>' . "Estado" . '</th>'
+                                
+                                . '</tr>'
+                                .'</table>';
+                            echo '<div class="container-fluid">';
+
+
+
+
+
+                            echo '</table> </div>';
+                        }
+
+                        ?>
+                    </table>
 
                    
                     <input type="submit" name="send" id="send" value="">

@@ -3,7 +3,7 @@
 /* @var $this yii\web\View */
 
 use yii\helpers\Html;
-
+use yii\grid\GridView;
 
 ?>
 <!DOCTYPE HTML>
@@ -26,25 +26,32 @@ use yii\helpers\Html;
 
                 <h2>Listagem Avarias</h2>
 
-                <table border="1">
-                    <tr>
-                        <td>Data</td>
-                        <td>Reparação</td>
-                        <td>Cliente</td>
-                        <td>Tecnico</td>
-                        <td>Estado da Reparação</td>
-                    </tr>
-                    <tr>
-                        <td>Ted</td>
-                        <td>22</td>
-                        <td>Estudante</td>
-                    </tr>
-                    <tr>
-                        <td>Ralf</td>
-                        <td>26</td>
-                        <td>Designer</td>
-                    </tr>
+
+               <table  class="table table-striped">
+                <?php
+            {
+                echo '<table class="table table-striped">'
+                    .'<tr>' .'<th>' . "Data" . '</th>'
+                    .'<th>' . "Reparação" . '</th>'
+                    .'<th>' . "Cliente" . '</th>'
+                    .'<th>' . "Tecnico" . '</th>'
+                    .'<th>' . "Estado" . '</th>'
+                    . '</tr>'
+                    .'</table>';
+                echo '<div class="container-fluid">';
+
+
+
+
+
+                echo '</table> </div>';
+            }
+
+        ?>
                 </table>
+
+
+
             </div>
         </div>
     </div>
