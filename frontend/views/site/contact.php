@@ -67,17 +67,9 @@ use yii\captcha\Captcha;
             </ul>
         </div>
 
-        <div >
-            <a href="index.php" class="logo"><img  src="images/logop.png" alt=""></a>
-        </div>
-
-
         <div class="connect">
-            <h3>Ajuda e suporte:</h3>
-            <p>
-                suportrepaircomp@gmail.com
-            </p>
             <h3>Redes Sociais</h3>
+
             <ul>
                 <li id="facebook">
                     <a href="">facebook</a>
@@ -89,6 +81,15 @@ use yii\captcha\Captcha;
                     <a href="">googleplus</a>
                 </li>
             </ul>
+        </div>
+        <div class="connect">
+            <a href="index.php" class="logo"><img  src="images/logop.png" alt=""></a>
+        </div>
+        <div class="connect">
+            <h3>Ajuda e suporte:</h3>
+            <p>
+                suportrepaircomp@gmail.com
+            </p>
         </div>
     </div>
 

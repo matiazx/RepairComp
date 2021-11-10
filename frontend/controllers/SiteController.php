@@ -255,5 +255,16 @@ class SiteController extends Controller
         return $this->render('resendVerificationEmail', [
             'model' => $model
         ]);
+
+    }
+
+    public function actionEstatistica()
+    {
+        return $this->render('estatistica');
+    }
+
+    public function actionListagemavarias()
+    {
+        return $this->render('listagemavarias');
     }
 }
