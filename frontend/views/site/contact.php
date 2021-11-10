@@ -42,7 +42,7 @@ use yii\captcha\Captcha;
                             echo '<table class="table table-striped">'
                                 .'<tr>' .'<th>' . "Avarias" . '</th>'
                                 .'<th>' . "Estado" . '</th>'
-                                
+
                                 . '</tr>'
                                 .'</table>';
                             echo '<div class="container-fluid">';
