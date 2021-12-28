@@ -41,13 +41,6 @@ body {
 	min-width: 960px;
 	padding: 0;
 }
-
-nav {
-
-	font-family: 'PT_Sans-Web-Regular';
-	font-size: 20px;
-
-}
 #header {
 	background: url(../images/bg-header.png) repeat-x top left;
 	margin: 0;
@@ -67,12 +60,10 @@ nav {
 	float: left;
 	margin: 0;
 	padding: 0;
-	width: 20px;
 }
 #header div a.logo img {
 	border: 0;
 	display: block;
-	width: 20px;
 }
 #header div form {
 	float: right;
@@ -455,7 +446,7 @@ nav {
 	box-shadow: 1px 0px 3px rgba(52, 50, 50, 0.5);
 	background: #fff url(../images/shadow.png) no-repeat 640px center;
 	margin: 0 auto;
-	min-height: 620px;
+	min-height: 973px;
 	overflow: hidden;
 	padding: 0;
 	width: 940px;
@@ -1239,14 +1230,14 @@ nav {
 	width: 331px;
 }
 #body .content .section .contact form #send {
-	background-position: -277px -440px;
+	background-position: -453px -440px;
 	height: 31px;
 	margin: 18px 0 0;
 	padding: 0;
 	width: 164px;
 }
 #body .content .section .contact form #send:hover {
-	background-position: -407px -567px;
+	background-position: -407px -531px;
 }
 #body .content .section .contact form textarea {
 	background: url(../images/interface.png) no-repeat 0 -179px;
@@ -1887,4 +1878,3 @@ nav {
 #footer .section ul li a:hover {
 	text-decoration: underline;
 }
-

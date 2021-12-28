@@ -3,18 +3,19 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model backend\models\UserModel */
+/* @var $model backend\models\SignupForm */
 
-$this->title = 'Create User Model';
-$this->params['breadcrumbs'][] = ['label' => 'User Models', 'url' => ['index']];
+$this->title = 'Create User';
+$this->params['breadcrumbs'][] = ['label' => 'Users', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="user-model-create">
+<div class="user-create">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+
 
     <?= $this->render('_form', [
         'model' => $model,
+        'role'=> array (['Funcionario', 'Gestor','Cliente']),
     ]) ?>
 
 </div>

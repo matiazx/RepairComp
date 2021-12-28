@@ -28,20 +28,20 @@ class SiteController extends Controller
     {
         return [
             'access' => [
-                'class' => AccessControl::className(),
-                'only' => ['logout', 'signup'],
+                'class' => AccessControl::class,
+                'only' => ['login', 'logout', 'signup'],
                 'rules' => [
                     [
-                        'actions' => ['signup'],
                         'allow' => true,
+                        'actions' => ['login', 'signup'],
                         'roles' => ['?'],
                     ],
                     [
-                        'actions' => ['logout'],
                         'allow' => true,
+                        'actions' => ['logout'],
                         'roles' => ['@'],
                     ],
-                ],
+                ]
             ],
             'verbs' => [
                 'class' => VerbFilter::className(),
@@ -144,7 +144,6 @@ class SiteController extends Controller
     public function actionAbout()
     {
         return $this->render('about');
-
     }
 
     /**
@@ -256,16 +255,5 @@ class SiteController extends Controller
         return $this->render('resendVerificationEmail', [
             'model' => $model
         ]);
-
-    }
-
-    public function actionEstatistica()
-    {
-        return $this->render('estatistica');
-    }
-
-    public function actionListagemavarias()
-    {
-        return $this->render('listagemavarias');
     }
 }

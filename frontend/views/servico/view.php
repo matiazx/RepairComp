@@ -4,14 +4,14 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model common\models\User */
+/* @var $model common\models\Servico */
 
 $this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Users', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Servicos', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
-<div class="user-view">
+<div class="servico-view">
 
 
 
@@ -30,18 +30,21 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'username',
-
-            'email:email',
-            'status',
+            'descricaoservico',
             [
-                'attribute' => 'role',
-                'label' => 'Role',
-                'value' => function($model){
-                    return $model->getRole();
-                },
+                'attribute' => 'tipo',
+                'value' => $model->getTipo(),
             ],
-
+            [
+                'attribute' => 'gravidade',
+                'value' => $model->getGravidade(),
+            ],
+            [
+                'attribute' => 'estado',
+                'value' => $model->getEstado(),
+            ],
+            'dataservico',
+            'fotografia',
 
         ],
     ]) ?>

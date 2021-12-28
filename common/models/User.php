@@ -17,6 +17,7 @@ use yii\web\IdentityInterface;
  * @property string $password_reset_token
  * @property string $verification_token
  * @property string $email
+ * @property string $role
  * @property string $auth_key
  * @property integer $status
  * @property integer $created_at
@@ -29,6 +30,7 @@ class User extends ActiveRecord implements IdentityInterface
     const STATUS_INACTIVE = 9;
     const STATUS_ACTIVE = 10;
 
+    public $role = array(['Funcionario', 'Gestor','Cliente']);
 
     /**
      * {@inheritdoc}
@@ -210,4 +212,23 @@ class User extends ActiveRecord implements IdentityInterface
     {
         $this->password_reset_token = null;
     }
+    public function getPassword()
+    {
+        return '';
+    }
+
+
+    public function getRole(){
+        switch ($this->role){
+            case 'Funcionario':
+                return 'Funcionario';
+            case 'Gestor':
+                return 'Gestor';
+            case 'Cliente':
+                return 'Cliente';
+            case 'Admin':
+                return 'Admin';
+        }
+    }
+
 }

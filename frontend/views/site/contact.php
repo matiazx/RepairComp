@@ -8,115 +8,38 @@ use yii\bootstrap4\Html;
 use yii\bootstrap4\ActiveForm;
 use yii\captcha\Captcha;
 
-
+$this->title = 'Contact';
+$this->params['breadcrumbs'][] = $this->title;
 ?>
-<!DOCTYPE HTML>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Historico</title>
-    <link rel="stylesheet" href="css/style.css" type="text/css">
-    <!--[if lt IE 9]>
-    <link rel="stylesheet" type="text/css" href="css/ie.css">
-    <![endif]-->
-</head>
-<body>
+<div class="site-contact">
+    <h1><?= Html::encode($this->title) ?></h1>
 
-<div id="body">
-    <div class="content">
-        <div class="section">
-            <div class="contact">
+    <p>
+        If you have business inquiries or other questions, please fill out the following form to contact us. Thank you.
+    </p>
 
-                <h2>Historico Avarias</h2>
-                <h3>Consulte aqui o seu historico</h3>
-                <form action="index.html">
-                    <label for="name"> <span>Tipo Equipamento</span>
-                        <input type="text" name="equip" id="equip">
-                    </label>
-                    <label for="email"> <span>Referência</span>
-                        <input type="text" name="referencia" id="referencia">
-                    </label>
-                    <table  class="table table-striped">
-                        <?php
-                        {
-                            echo '<table class="table table-striped">'
-                                .'<tr>'
-                                .'<th>' . "Equipamento" . '</th>'
-                                .'<th>' . "Referência" . '</th>'
-                               
-                                .'<th>' . "Avarias" . '</th>'
-                                .'<th>' . "Estado" . '</th>'
+    <div class="row">
+        <div class="col-lg-5">
+            <?php $form = ActiveForm::begin(['id' => 'contact-form']); ?>
 
-                                . '</tr>'
-                                .'</table>';
-                            echo '<div class="container-fluid">';
+                <?= $form->field($model, 'name')->textInput(['autofocus' => true]) ?>
 
+                <?= $form->field($model, 'email') ?>
 
+                <?= $form->field($model, 'subject') ?>
 
+                <?= $form->field($model, 'body')->textarea(['rows' => 6]) ?>
 
+                <?= $form->field($model, 'verifyCode')->widget(Captcha::className(), [
+                    'template' => '<div class="row"><div class="col-lg-3">{image}</div><div class="col-lg-6">{input}</div></div>',
+                ]) ?>
 
-                            echo '</table> </div>';
-                        }
+                <div class="form-group">
+                    <?= Html::submitButton('Submit', ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
+                </div>
 
-                        ?>
-                    </table>
-
-                   
-                    <input type="submit" name="send" id="send" value="">
-
-
-                </form>
-
-
-            </div>
-        </div>
-</div>
-<div id="footer" >
-    <div>
-        <div class="contact" >
-            <h3>Contactos</h3>
-            <ul>
-                <li>
-                    <b>Morada:</b> <span>Alcobaça</span>
-                </li>
-                <li>
-                    <b>Telemovel:</b> <span>934-889-313</span>
-                </li>
-                <li>
-                    <b>Fax:</b> <span>934-889-313</span>
-                </li>
-                <li>
-                    <b>Email:</b> <span>repaircomp@gmial.com</span>
-                </li>
-            </ul>
-        </div>
-
-        <div class="connect">
-            <h3>Redes Sociais</h3>
-
-            <ul>
-                <li id="facebook">
-                    <a href="">facebook</a>
-                </li>
-                <li id="twitter">
-                    <a href="">twitter</a>
-                </li>
-                <li id="googleplus">
-                    <a href="">googleplus</a>
-                </li>
-            </ul>
-        </div>
-        <div class="connect">
-            <a href="index.php" class="logo"><img  src="images/logop.png" alt=""></a>
-        </div>
-        <div class="connect">
-            <h3>Ajuda e suporte:</h3>
-            <p>
-                suportrepaircomp@gmail.com
-            </p>
+            <?php ActiveForm::end(); ?>
         </div>
     </div>
 
 </div>
-</body>
-</html>

@@ -25,39 +25,38 @@ AppAsset::register($this);
 <body class="d-flex flex-column h-100">
 <?php $this->beginBody() ?>
 
-<header style="margin-bottom: 50px">
+<header>
     <?php
     NavBar::begin([
-
-        'brandImage' => 'images/icon.png',
+        'brandLabel' => Yii::$app->name,
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
-            'class' => 'navbar navbar-expand-md navbar-dark bg-dark fixed-top ',
-            'style' =>'width:25% height:100%',
+            'class' => 'navbar navbar-expand-md navbar-dark bg-dark fixed-top',
         ],
     ]);
-
-
-
+    $menuItems = [
+        ['label' => 'Home', 'url' => ['/site/index']],
+        ['label' => 'About', 'url' => ['/site/about']],
+        ['label' => 'Contact', 'url' => ['/site/contact']],
+    ];
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
         $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
     } else {
         $menuItems = [
-            ['label' => 'Home', 'url' => ['/site/index'] , 'style'=> 'font-size: 17px'],
-            ['label' => 'Avaria', 'url' => ['/site/about']],
-            ['label' => 'Histórico', 'url' => ['/site/contact']],
-            ['label' => 'Listagem', 'url' => ['/site/listagemavarias']],
-            ['label' => 'Estatisticas', 'url' => ['/site/estatistica']],
+            ['label' => 'Home', 'url' => ['/'] , 'style'=> 'font-size: 17px'],
+            ['label' => 'Contactos', 'url' => ['/site/contact']],
+            ['label' => 'Servico', 'url' => ['/servico/index']],
+
         ];
-        $menuItems[] = '<ul class="navbar-nav ml-auto"><li class="nav-item">'
+        $menuItems[] = '<li>'
             . Html::beginForm(['/site/logout'], 'post', ['class' => 'form-inline'])
             . Html::submitButton(
                 'Logout (' . Yii::$app->user->identity->username . ')',
-                ['class' => 'btn btn-link logout ']
+                ['class' => 'btn btn-link logout']
             )
             . Html::endForm()
-            . '</li></ul>';
+            . '</li>';
     }
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav'],
@@ -72,6 +71,8 @@ AppAsset::register($this);
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
+        <label></label>
+
         <?= Alert::widget() ?>
         <?= $content ?>
     </div>

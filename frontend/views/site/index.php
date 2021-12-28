@@ -1,3 +1,4 @@
+
 <!DOCTYPE HTML>
 
 <html>
@@ -15,27 +16,27 @@
     <div class="header">
         <ul>
             <li>
-                <a class="figure"><img src="images/tablet.jpg" alt=""></a>
+                <a href="services.html" class="figure"><img src="images/tablet.jpg" alt=""></a>
                 <div>
-                    <h3>Pedido de Assistencia</h3>
+                    <h3><a href="site/about">Pedido de Assistencia</a></h3>
                     <p>
                         Regista o teu pedido aqui e o nossos tecnisco entraram em contacto consigo no mesmo dia.
                     </p>
                 </div>
             </li>
             <li>
-                <a  class="figure"><img src="images/service.png" alt=""></a>
+                <a href="services.html" class="figure"><img src="images/service.png" alt=""></a>
                 <div>
-                    <h3>Soluções Interegrais</h3>
+                    <h3><a href="services.html">Soluções Interegrais</a></h3>
                     <p>
                         Adaptamos os nossos serviços de manutenção em função do objetivo pretendido e de acordo com as necessidades e requisitos de cada cliente.
                     </p>
                 </div>
             </li>
             <li>
-                <a class="figure"><img src="images/warranty.png" alt=""></a>
+                <a href="services.html" class="figure"><img src="images/warranty.png" alt=""></a>
                 <div>
-                    <h3>Tecnicos Qualificados </h3>
+                    <h3><a href="booking.html">Tecnicos Qualificados </a></h3>
                     <p>
                         Contamos com uma equipa de excelência constituida de tecnicos qualificados em diversas áreas.
                     </p>
@@ -44,14 +45,14 @@
         </ul>
     </div>
     <div class="body">
-         <img src="images/reparacao.jpg" width="450" height="400" >
+        <img src="images/reparacao.jpg" width="450" height="400" >
 
         <div>
             <h1>Repair Comp<span></span></h1>
             <p>
                 Solicite aqui o seu pedido de assisntencia
             </p>
-            <a href="index.php?r=site%2Fabout">Pedir Assistencia</a>
+            <a href="site/about">Pedir Assistencia</a>
         </div>
     </div>
 
@@ -110,36 +111,34 @@
                 <li>
                     <b>Fax:</b> <span>934-889-313</span>
                 </li>
-               
-            </ul>
-        </div>
-
-
-        <div class="connect">
-            <h3>Redes Sociais</h3>
-
-            <ul>
-                <li id="facebook">
-                    <a href="">facebook</a>
-                </li>
-                <li id="twitter">
-                    <a href="">twitter</a>
-                </li>
-                <li id="googleplus">
-                    <a href="">googleplus</a>
+                <li>
+                    <b>Email:</b> <span>repaircomp@gmial.com</span>
                 </li>
             </ul>
         </div>
-        <div class="connect">
+
+        <div >
             <a href="index.php" class="logo"><img  src="images/logop.png" alt=""></a>
         </div>
+
+
         <div class="connect">
             <h3>Ajuda e suporte:</h3>
             <p>
                 suportrepaircomp@gmail.com
             </p>
-
-
+            <h3>Redes Sociais</h3>
+            <ul>
+                <li id="facebook">
+                    <a href="https://pt-pt.facebook.com/">facebook</a>
+                </li>
+                <li id="twitter">
+                    <a href="https://twitter.com/">twitter</a>
+                </li>
+                <li id="googleplus">
+                    <a href="https://myaccount.google.com/profile">googleplus</a>
+                </li>
+            </ul>
         </div>
     </div>
 
