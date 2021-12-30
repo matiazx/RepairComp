@@ -35,24 +35,40 @@ AppAsset::register($this);
         ],
     ]);
     $menuItems = [
-        ['label' => 'Home', 'url' => ['/site/index']],
-        ['label' => 'About', 'url' => ['/site/about']],
+
+
         ['label' => 'Contact', 'url' => ['/site/contact']],
     ];
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
         $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
-    } else {
+    }
+    elseif(Yii::$app->user->identity->status == 9 || Yii::$app->user->identity->status == 10){
         $menuItems = [
-            ['label' => 'Home', 'url' => ['/'] , 'style'=> 'font-size: 17px'],
-            ['label' => 'Contactos', 'url' => ['/site/contact']],
-            ['label' => 'Servico', 'url' => ['/servico/index']],
+            ['label' => 'Serviços', 'url' => ['/servico/index']],
+            ['label' => 'Relatorios', 'url' => ['/relatorio/index']],
+            ['label' => 'Estatisticas', 'url' => ['/estatistica/index']],
+            ['label' => 'Pecas', 'url' => ['/peca/index']],
+            ['label' => 'Encomendas', 'url' => ['/dispositivo/index']],
 
         ];
         $menuItems[] = '<li>'
             . Html::beginForm(['/site/logout'], 'post', ['class' => 'form-inline'])
             . Html::submitButton(
                 'Logout (' . Yii::$app->user->identity->username . ')',
+                ['class' => 'btn btn-link logout']
+            )
+            . Html::endForm()
+            . '</li>';
+    }
+    else{
+        $menuItems = [
+            ['label' => 'Serviços', 'url' => ['/servico/index']],
+        ];
+        $menuItems[] = '<li>'
+            . Html::beginForm(['/site/logout'], 'post')
+            . Html::submitButton(
+                'Logout (' . Yii::$app->user->identity->nomeUtilizador. ')',
                 ['class' => 'btn btn-link logout']
             )
             . Html::endForm()
