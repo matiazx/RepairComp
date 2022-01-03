@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'id',
                 'label' => 'Nome',
                 'value' => function ($model) {
-                    return $model->id;
+                    return (($model->id));
                 },
             ],
             'descricaoservico',

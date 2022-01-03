@@ -231,4 +231,12 @@ class User extends ActiveRecord implements IdentityInterface
         }
     }
 
+    public function getNome($id){
+
+        $user = User::find()->where(['id'=>$id])->one()->username;
+        var_dump((User::find()->where(['id'=>$id])->one())); die;
+        return $user;
+
+    }
+
 }

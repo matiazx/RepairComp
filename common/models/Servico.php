@@ -3,6 +3,7 @@
 namespace common\models;
 
 use Yii;
+use common\models\User;
 
 /**
  * This is the model class for table "servico".
@@ -98,4 +99,6 @@ class Servico extends \yii\db\ActiveRecord
         }
         return $estado;
     }
+
+
 }
