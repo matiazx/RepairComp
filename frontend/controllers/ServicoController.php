@@ -68,17 +68,20 @@ class ServicoController extends Controller
     public function actionCreate()
     {
         $model = new Servico();
-        $model->dataservico = date("Y-m-d H:i:s");
+
 
 
         if ($this->request->isPost) {
+            //var_dump($this->request->isPost);
+            $model->estado= "Não Resolvido";
+            $model->dataservico = date("Y-m-d H:i:s");
             if ($model->load($this->request->post()) && $model->save()) {
                 return $this->redirect(['view', 'id' => $model->id]);
             }
         } else {
             $model->loadDefaultValues();
         }
-
+        //var_dump($this->request->isPost);
         return $this->render('create', [
             'model' => $model,
         ]);

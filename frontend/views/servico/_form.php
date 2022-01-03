@@ -27,12 +27,12 @@ use yii\helpers\ArrayHelper;
                     <td align="left"><label>Gravidade</label>
                     <td><?= $form->field($model, 'gravidade')->dropDownList($model->gravidade_array, ['prompt' => 'Selecione a gravidade'])->label(false) ?>
                 <tr>
-                    <td align="left"><label>Data</label>
-                    <td> <?= $form->field($model, 'dataservico')->textarea()->label(false) ?>
+
                 <tr>
 
                     <td align="left"><label>Estado</label>
-                    <td> <?= $form->field($model, 'estado')->dropDownList($model->estado_array, ['prompt' => 'Selecione estado', 'disabled' => 'disabled'])->label(false)  ?>
+                    <td> <?= $form->field($model, 'estado')->dropDownList($model->estado_array, ['prompt' => 'Selecione estado'])->label(false) ?>
+
                 <tr>
 
 

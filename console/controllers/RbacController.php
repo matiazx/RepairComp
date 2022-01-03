@@ -30,27 +30,13 @@ class RbacController extends Controller
         $auth->add($updateDispositivo);
 
         // add "author" role and give this role the "createPost" permission
-        $funcionario = $auth->createRole('funcionario');
-        $auth->add($funcionario);
-        $auth->addChild($funcionario, $createAvaria);
-        $auth->addChild($funcionario, $updateAvaria);
+        $cliente = $auth->createRole('cliente');
+        $auth->add($cliente);
+        $auth->addChild($cliente, $createAvaria);
+        $auth->addChild($cliente, $updateAvaria);
 
         $tecnico = $auth->createRole('tecnico');
         $auth->add($tecnico);
-        $auth->addChild($funcionario, $createAvaria);
-        $auth->addChild($funcionario, $updateAvaria);
-        $auth->addChild($funcionario, $createDispositivo);
-        $auth->addChild($funcionario, $updateDispositivo);
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -62,6 +48,7 @@ class RbacController extends Controller
         $auth->add($admin);
         $gestor = $auth->createRole('gestor');
         $auth->add($gestor);
+
 
 
         // add "createUser" permission
