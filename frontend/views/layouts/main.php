@@ -39,13 +39,16 @@ AppAsset::register($this);
 
         ['label' => 'Contact', 'url' => ['/site/contact']],
     ];
+
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
         $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
     }
-    elseif(Yii::$app->user->identity->status == 9 || Yii::$app->user->identity->status == 10){
+
+    elseif(array_keys(Yii::$app->authManager->getRolesByUser(Yii::$app->user->getId()))[0] == "admin"|| array_keys(Yii::$app->authManager->getRolesByUser(Yii::$app->user->getId()))[0] == "tecnico"|| array_keys(Yii::$app->authManager->getRolesByUser(Yii::$app->user->getId()))[0] == "gestor"){
         $menuItems = [
             ['label' => 'Serviços', 'url' => ['/servico/index']],
+            ['label' => 'Dispositivo', 'url' => ['/dispositivo/index']],
             ['label' => 'Relatorios', 'url' => ['/relatorio/index']],
             ['label' => 'Estatisticas', 'url' => ['/estatistica/index']],
             ['label' => 'Pecas', 'url' => ['/peca/index']],
@@ -64,11 +67,12 @@ AppAsset::register($this);
     else{
         $menuItems = [
             ['label' => 'Serviços', 'url' => ['/servico/index']],
+            ['label' => 'Dispositivo', 'url' => ['/dispositivo/index']],
         ];
         $menuItems[] = '<li>'
             . Html::beginForm(['/site/logout'], 'post')
             . Html::submitButton(
-                'Logout (' . Yii::$app->user->identity->nomeUtilizador. ')',
+                'Logout (' . Yii::$app->user->identity->username. ')',
                 ['class' => 'btn btn-link logout']
             )
             . Html::endForm()

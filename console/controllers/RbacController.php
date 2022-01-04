@@ -72,7 +72,9 @@ class RbacController extends Controller
 
         // Assign roles to users. 1 and 2 are IDs returned by IdentityInterface::getId()
         // usually implemented in your User model.
-        $auth->assign($gestor, 2);
-        $auth->assign($admin, 1);
+
+
+        $auth->assign($admin, 3);
+        $auth->assign($gestor, 4);
     }
 }

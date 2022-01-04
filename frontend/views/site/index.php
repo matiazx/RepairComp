@@ -11,7 +11,7 @@ $this->title = 'RepairComp';
 
         <p class="lead">É quando mais precisas de tecnologia que não podemos deixar que ela te falte. Podes contar com os nossos serviços.</p>
 
-        <p><a class="btn btn-lg btn-success" href="index.php?r=servico%2Findex">Pedir Assistencia</a></p>
+
     </div>
 
     <div class="body-content">

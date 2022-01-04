@@ -31,8 +31,7 @@ use yii\helpers\ArrayHelper;
                 <tr>
 
                     <td align="left"><label>Estado</label>
-                    <td> <?= $form->field($model, 'estado')->dropDownList($model->estado_array, ['prompt' => 'Selecione estado'])->label(false) ?>
-
+                    <td> <?= $form->field($model, 'estado')->dropDownList($model->estado_array, ['prompt' => 'Selecione estado', ])->label(false) ?>
                 <tr>
 
 
