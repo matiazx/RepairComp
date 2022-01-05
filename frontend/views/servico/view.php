@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model common\models\Servico */
+/* @var $model frontend\models\Servico */
 
 $this->title = $model->id;
 $this->params['breadcrumbs'][] = ['label' => 'Servicos', 'url' => ['index']];
@@ -13,7 +13,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="servico-view">
 
-
+    <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
         <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
@@ -31,21 +31,11 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'id',
             'descricaoservico',
-            [
-                'attribute' => 'tipo',
-                'value' => $model->getTipo(),
-            ],
-            [
-                'attribute' => 'gravidade',
-                'value' => $model->getGravidade(),
-            ],
-            [
-                'attribute' => 'estado',
-                'value' => $model->getEstado(),
-            ],
+            'tipo',
+            'gravidade',
             'dataservico',
             'fotografia',
-
+            'estado',
         ],
     ]) ?>
 

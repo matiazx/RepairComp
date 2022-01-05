@@ -2,12 +2,11 @@
 
 namespace frontend\controllers;
 
-use common\models\Servico;
-use common\models\ServicoSearch;
+use frontend\models\Servico;
+use frontend\models\ServicoSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use Yii;
 
 /**
  * ServicoController implements the CRUD actions for Servico model.
@@ -68,21 +67,15 @@ class ServicoController extends Controller
     public function actionCreate()
     {
         $model = new Servico();
-        $model->estado= 0;
-        $model->dataservico = date("Y-m-d H:i:s");
-
-
 
         if ($this->request->isPost) {
-            //var_dump($this->request->isPost);
-
             if ($model->load($this->request->post()) && $model->save()) {
                 return $this->redirect(['view', 'id' => $model->id]);
             }
         } else {
             $model->loadDefaultValues();
         }
-        //var_dump($this->request->isPost);
+
         return $this->render('create', [
             'model' => $model,
         ]);

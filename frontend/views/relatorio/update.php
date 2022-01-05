@@ -3,11 +3,11 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Relatorio */
+/* @var $model frontend\models\Relatorio */
 
-$this->title = 'Update Relatorio: ' . $model->idRelatorio;
+$this->title = 'Update Relatorio: ' . $model->id;
 $this->params['breadcrumbs'][] = ['label' => 'Relatorios', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->idRelatorio, 'url' => ['view', 'id' => $model->idRelatorio]];
+$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>
 <div class="relatorio-update">

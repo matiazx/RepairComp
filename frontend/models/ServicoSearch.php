@@ -1,13 +1,13 @@
 <?php
 
-namespace common\models;
+namespace frontend\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use common\models\Servico;
+use frontend\models\Servico;
 
 /**
- * ServicoSearch represents the model behind the search form of `common\models\Servico`.
+ * ServicoSearch represents the model behind the search form of `frontend\models\Servico`.
  */
 class ServicoSearch extends Servico
 {

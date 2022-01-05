@@ -2,14 +2,14 @@
 
 namespace frontend\controllers;
 
-use frontend\models\relatorio;
-use frontend\models\relatorioSearch;
+use frontend\models\Relatorio;
+use frontend\models\RelatorioSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * RelatorioController implements the CRUD actions for relatorio model.
+ * RelatorioController implements the CRUD actions for Relatorio model.
  */
 class RelatorioController extends Controller
 {
@@ -32,12 +32,12 @@ class RelatorioController extends Controller
     }
 
     /**
-     * Lists all relatorio models.
+     * Lists all Relatorio models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new relatorioSearch();
+        $searchModel = new RelatorioSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
         return $this->render('index', [
@@ -47,7 +47,7 @@ class RelatorioController extends Controller
     }
 
     /**
-     * Displays a single relatorio model.
+     * Displays a single Relatorio model.
      * @param int $id ID
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -60,13 +60,13 @@ class RelatorioController extends Controller
     }
 
     /**
-     * Creates a new relatorio model.
+     * Creates a new Relatorio model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new relatorio();
+        $model = new Relatorio();
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
@@ -82,7 +82,7 @@ class RelatorioController extends Controller
     }
 
     /**
-     * Updates an existing relatorio model.
+     * Updates an existing Relatorio model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param int $id ID
      * @return mixed
@@ -102,7 +102,7 @@ class RelatorioController extends Controller
     }
 
     /**
-     * Deletes an existing relatorio model.
+     * Deletes an existing Relatorio model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param int $id ID
      * @return mixed
@@ -116,15 +116,15 @@ class RelatorioController extends Controller
     }
 
     /**
-     * Finds the relatorio model based on its primary key value.
+     * Finds the Relatorio model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param int $id ID
-     * @return relatorio the loaded model
+     * @return Relatorio the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = relatorio::findOne($id)) !== null) {
+        if (($model = Relatorio::findOne($id)) !== null) {
             return $model;
         }
 

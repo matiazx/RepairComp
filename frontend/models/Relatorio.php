@@ -10,6 +10,8 @@ use Yii;
  * @property int $id
  * @property string $datarelatorio
  * @property string $descricao
+ *
+ * @property Servico $id0
  */
 class Relatorio extends \yii\db\ActiveRecord
 {
@@ -30,6 +32,7 @@ class Relatorio extends \yii\db\ActiveRecord
             [['datarelatorio', 'descricao'], 'required'],
             [['datarelatorio'], 'safe'],
             [['descricao'], 'string', 'max' => 30],
+            [['id'], 'exist', 'skipOnError' => true, 'targetClass' => Servico::className(), 'targetAttribute' => ['id' => 'id']],
         ];
     }
 
@@ -43,5 +46,15 @@ class Relatorio extends \yii\db\ActiveRecord
             'datarelatorio' => 'Datarelatorio',
             'descricao' => 'Descricao',
         ];
+    }
+
+    /**
+     * Gets query for [[Id0]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getId0()
+    {
+        return $this->hasOne(Servico::className(), ['id' => 'id']);
     }
 }

@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel common\models\ServicoSearch */
+/* @var $searchModel frontend\models\ServicoSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Servicos';
@@ -12,48 +12,27 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="servico-index">
 
-
+    <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Criar Servico', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Servico', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
-
+        'filterModel' => $searchModel,
         'columns' => [
+            ['class' => 'yii\grid\SerialColumn'],
 
-
-            [
-                'attribute' => 'id',
-                'label' => 'Nome',
-                'value' => function ($model) {
-                    return (($model->id));
-                },
-            ],
+            'id',
             'descricaoservico',
-            [
-                'attribute' => 'tipo',
-                'value' => function ($model) {
-                    return $model->getTipo();
-                },
-            ],
-            [
-                'attribute' => 'gravidade',
-                'value' => function ($model) {
-                    return $model->getGravidade();
-                },
-            ],
+            'tipo',
+            'gravidade',
             'dataservico',
             //'fotografia',
-            [
-                'attribute' => 'estado',
-                'value' => function ($model) {
-                    return $model->getEstado();
-                },
-            ],
+            //'estado',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
