@@ -1,28 +1,31 @@
 <?php
 
-namespace frontend\models;
+namespace common\models;
 
 use Yii;
 
 /**
  * This is the model class for table "servico".
  *
+ * @property int $idservico
+ * @property string $descricao
+ * @property int $tipo
+ * @property int $estado
+ * @property int $gravidade
+ * @property string $data
+ * @property int $idDispositivo
+ * @property int|null $idRelatorio
  * @property int $id
- * @property string $descricaoservico
- * @property string $tipo
- * @property string $gravidade
- * @property string $dataservico
- * @property resource|null $fotografia
- * @property string $estado
  *
- * @property Avaliacaoservico $avaliacaoservico
- * @property Dispositivo $id0
- * @property Notificacaoservico $notificacaoservico
- * @property Pecasservico $pecasservico
- * @property Relatorio $relatorio
+ * @property User $id0
+ * @property Dispositivo $idDispositivo0
+ * @property Relatorio[] $relatorios
  */
 class Servico extends \yii\db\ActiveRecord
 {
+    public $estado_array = array('Starvation', 'Nao Resolvido', 'Em Resolucao', 'Resolvido');
+    public $tipo_array = array('Hardware','Software');
+    public $gravidade_array = array('Não Funcional','Funcional');
     /**
      * {@inheritdoc}
      */
@@ -37,13 +40,12 @@ class Servico extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['descricaoservico', 'tipo', 'gravidade', 'dataservico', 'estado'], 'required'],
-            [['dataservico'], 'safe'],
-            [['descricaoservico'], 'string', 'max' => 30],
-            [['tipo'], 'string', 'max' => 2],
-            [['gravidade', 'estado'], 'string', 'max' => 12],
-            [['fotografia'], 'string', 'max' => 10000],
-            [['id'], 'exist', 'skipOnError' => true, 'targetClass' => Dispositivo::className(), 'targetAttribute' => ['id' => 'id']],
+            [['descricao', 'tipo', 'gravidade', 'data', 'idDispositivo', 'id'], 'required'],
+            [['tipo', 'estado', 'gravidade', 'idDispositivo', 'idRelatorio', 'id'], 'integer'],
+            [['data'], 'safe'],
+            [['descricao'], 'string', 'max' => 200],
+            [['id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['id' => 'id']],
+            [['idDispositivo'], 'exist', 'skipOnError' => true, 'targetClass' => Dispositivo::className(), 'targetAttribute' => ['idDispositivo' => 'idDispositivo']],
         ];
     }
 
@@ -53,24 +55,16 @@ class Servico extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'descricaoservico' => 'Descricaoservico',
+            'idservico' => 'Idservico',
+            'descricao' => 'Descricao',
             'tipo' => 'Tipo',
-            'gravidade' => 'Gravidade',
-            'dataservico' => 'Dataservico',
-            'fotografia' => 'Fotografia',
             'estado' => 'Estado',
+            'gravidade' => 'Gravidade',
+            'data' => 'Data',
+            'idDispositivo' => 'Id Dispositivo',
+            'idRelatorio' => 'Id Relatorio',
+            'id' => 'ID',
         ];
-    }
-
-    /**
-     * Gets query for [[Avaliacaoservico]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
-    public function getAvaliacaoservico()
-    {
-        return $this->hasOne(Avaliacaoservico::className(), ['id' => 'id']);
     }
 
     /**
@@ -80,36 +74,60 @@ class Servico extends \yii\db\ActiveRecord
      */
     public function getId0()
     {
-        return $this->hasOne(Dispositivo::className(), ['id' => 'id']);
+        return $this->hasOne(User::className(), ['id' => 'id']);
     }
 
     /**
-     * Gets query for [[Notificacaoservico]].
+     * Gets query for [[IdDispositivo0]].
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getNotificacaoservico()
+    public function getIdDispositivo0()
     {
-        return $this->hasOne(Notificacaoservico::className(), ['id' => 'id']);
+        return $this->hasOne(Dispositivo::className(), ['idDispositivo' => 'idDispositivo']);
     }
 
     /**
-     * Gets query for [[Pecasservico]].
+     * Gets query for [[Relatorios]].
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getPecasservico()
+    public function getRelatorios()
     {
-        return $this->hasOne(Pecasservico::className(), ['id' => 'id']);
+        return $this->hasMany(Relatorio::className(), ['idServico' => 'idservico']);
+    }
+    public function getGravidade(){
+        switch ($this->gravidade){
+            case 0:
+                $gravidade = "Nao funcional";
+                break;
+            case 1:
+                $gravidade = "Funcional";
+                break;
+        }
+        return $gravidade;
     }
 
-    /**
-     * Gets query for [[Relatorio]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
-    public function getRelatorio()
-    {
-        return $this->hasOne(Relatorio::className(), ['id' => 'id']);
+    public function getTipo(){
+        switch ($this->tipo){
+            case 0:
+                $tipo = "Hardware";
+                break;
+            case 1:
+                $tipo = "Software";
+                break;
+        }
+        return $tipo;
+    }
+
+    public function getEstado(){
+        switch ($this->estado){
+            case 0:
+                return ['style' => 'background-color: orange'];
+            case 1:
+                return ['style' => 'background-color: yellow'];
+            case 2:
+                return ['style' => 'background-color: green'];
+        }
     }
 }

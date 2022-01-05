@@ -48,14 +48,14 @@ class ServicoController extends Controller
 
     /**
      * Displays a single Servico model.
-     * @param int $id ID
+     * @param int $idservico Idservico
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView($id)
+    public function actionView($idservico)
     {
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $this->findModel($idservico),
         ]);
     }
 
@@ -67,11 +67,10 @@ class ServicoController extends Controller
     public function actionCreate()
     {
         $model = new Servico();
-        $model->dataservico = date("Y-m-d H:i:s");
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
+                return $this->redirect(['view', 'idservico' => $model->idservico]);
             }
         } else {
             $model->loadDefaultValues();
@@ -85,16 +84,16 @@ class ServicoController extends Controller
     /**
      * Updates an existing Servico model.
      * If update is successful, the browser will be redirected to the 'view' page.
-     * @param int $id ID
+     * @param int $idservico Idservico
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($id)
+    public function actionUpdate($idservico)
     {
-        $model = $this->findModel($id);
+        $model = $this->findModel($idservico);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['view', 'idservico' => $model->idservico]);
         }
 
         return $this->render('update', [
@@ -105,13 +104,13 @@ class ServicoController extends Controller
     /**
      * Deletes an existing Servico model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param int $id ID
+     * @param int $idservico Idservico
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($id)
+    public function actionDelete($idservico)
     {
-        $this->findModel($id)->delete();
+        $this->findModel($idservico)->delete();
 
         return $this->redirect(['index']);
     }
@@ -119,11 +118,11 @@ class ServicoController extends Controller
     /**
      * Finds the Servico model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param int $id ID
+     * @param int $idservico Idservico
      * @return Servico the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id)
+    protected function findModel($idservico)
     {
         if (($model = Servico::findOne($id)) !== null) {
             return $model;

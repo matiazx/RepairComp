@@ -2,7 +2,6 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use yii\helpers\ArrayHelper;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Servico */
@@ -11,35 +10,28 @@ use yii\helpers\ArrayHelper;
 
 <div class="servico-form">
 
+    <?php $form = ActiveForm::begin(); ?>
 
+    <?= $form->field($model, 'descricao')->textInput(['maxlength' => true]) ?>
 
+    <?= $form->field($model, 'tipo')->textInput() ?>
 
+    <?= $form->field($model, 'estado')->textInput() ?>
 
-            <?php $form = ActiveForm::begin(); ?>
-            <table style="width: 300px">
-                <tr>
-                <td align="left"><label>Descricao</label>
-                <td> <?= $form->field($model, 'descricaoservico')->textarea(['maxlength' => true])->label(false) ?>
-                <tr>
-                    <td align="left"><label>Tipo</label>
-                    <td><?= $form->field($model, 'tipo')->dropDownList($model->tipo_array, ['prompt' => 'Selecione tipo'])->label(false) ?>
-                <tr>
-                    <td align="left"><label>Gravidade</label>
-                    <td><?= $form->field($model, 'gravidade')->dropDownList($model->gravidade_array, ['prompt' => 'Selecione a gravidade'])->label(false) ?>
-                <tr>
-                    <td align="left"><label>Data</label>
-                    <td> <?= $form->field($model, 'dataservico')->textarea()->label(false) ?>
-                <tr>
+    <?= $form->field($model, 'gravidade')->textInput() ?>
 
-                    <td align="left"><label>Estado</label>
-                    <td> <?= $form->field($model, 'estado')->dropDownList($model->estado_array, ['prompt' => 'Selecione estado'])->label(false) ?>
-                <tr>
+    <?= $form->field($model, 'data')->textInput() ?>
 
+    <?= $form->field($model, 'idDispositivo')->textInput() ?>
 
-                    <td></td><td align="right"><?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
-            </table>
+    <?= $form->field($model, 'idRelatorio')->textInput() ?>
 
+    <?= $form->field($model, 'id')->textInput() ?>
 
+    <div class="form-group">
+        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+    </div>
 
-            <?php ActiveForm::end(); ?>
+    <?php ActiveForm::end(); ?>
+
 </div>

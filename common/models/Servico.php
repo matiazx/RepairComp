@@ -23,6 +23,9 @@ use Yii;
  */
 class Servico extends \yii\db\ActiveRecord
 {
+    public $estado_array = array('Starvation', 'Nao Resolvido', 'Em Resolucao', 'Resolvido');
+    public $tipo_array = array('Hardware','Software');
+    public $gravidade_array = array('Não Funcional','Funcional');
     /**
      * {@inheritdoc}
      */
@@ -92,5 +95,39 @@ class Servico extends \yii\db\ActiveRecord
     public function getRelatorios()
     {
         return $this->hasMany(Relatorio::className(), ['idServico' => 'idservico']);
+    }
+    public function getGravidade(){
+        switch ($this->gravidade){
+            case 0:
+                $gravidade = "Nao funcional";
+                break;
+            case 1:
+                $gravidade = "Funcional";
+                break;
+        }
+        return $gravidade;
+    }
+
+    public function getTipo(){
+        switch ($this->tipo){
+            case 0:
+                $tipo = "Hardware";
+                break;
+            case 1:
+                $tipo = "Software";
+                break;
+        }
+        return $tipo;
+    }
+
+    public function getEstado(){
+        switch ($this->estado){
+            case 0:
+                return ['style' => 'background-color: orange'];
+            case 1:
+                return ['style' => 'background-color: yellow'];
+            case 2:
+                return ['style' => 'background-color: green'];
+        }
     }
 }
