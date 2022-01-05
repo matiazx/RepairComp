@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel frontend\models\ServicoSearch */
+/* @var $searchModel common\models\ServicoSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Servicos';
@@ -26,13 +26,15 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
-            'descricaoservico',
+            'idservico',
+            'descricao',
             'tipo',
+            'estado',
             'gravidade',
-            'dataservico',
-            //'fotografia',
-            //'estado',
+            //'data',
+            //'idDispositivo',
+            //'idRelatorio',
+            //'id',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

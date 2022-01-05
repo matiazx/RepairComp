@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel frontend\models\RelatorioSearch */
+/* @var $searchModel common\models\RelatorioSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Relatorios';
@@ -26,8 +26,10 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
+            'idRelatorio',
+            'idServico',
+            'idDispositivo',
             'id',
-            'datarelatorio',
             'descricao',
 
             ['class' => 'yii\grid\ActionColumn'],

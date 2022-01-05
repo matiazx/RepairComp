@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model frontend\models\RelatorioSearch */
+/* @var $model common\models\RelatorioSearch */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
@@ -15,9 +15,13 @@ use yii\widgets\ActiveForm;
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'id') ?>
+    <?= $form->field($model, 'idRelatorio') ?>
 
-    <?= $form->field($model, 'datarelatorio') ?>
+    <?= $form->field($model, 'idServico') ?>
+
+    <?= $form->field($model, 'idDispositivo') ?>
+
+    <?= $form->field($model, 'id') ?>
 
     <?= $form->field($model, 'descricao') ?>
 

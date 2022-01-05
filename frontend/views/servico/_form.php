@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model frontend\models\Servico */
+/* @var $model common\models\Servico */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
@@ -12,19 +12,21 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
+    <?= $form->field($model, 'descricao')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'tipo')->textInput() ?>
+
+    <?= $form->field($model, 'estado')->textInput() ?>
+
+    <?= $form->field($model, 'gravidade')->textInput() ?>
+
+    <?= $form->field($model, 'data')->textInput() ?>
+
+    <?= $form->field($model, 'idDispositivo')->textInput() ?>
+
+    <?= $form->field($model, 'idRelatorio')->textInput() ?>
+
     <?= $form->field($model, 'id')->textInput() ?>
-
-    <?= $form->field($model, 'descricaoservico')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'tipo')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'gravidade')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'dataservico')->textInput() ?>
-
-    <?= $form->field($model, 'fotografia')->textInput() ?>
-
-    <?= $form->field($model, 'estado')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

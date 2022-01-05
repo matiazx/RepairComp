@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model frontend\models\DispositivoSearch */
+/* @var $model common\models\DispositivoSearch */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
@@ -15,13 +15,13 @@ use yii\widgets\ActiveForm;
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'id') ?>
+    <?= $form->field($model, 'idDispositivo') ?>
+
+    <?= $form->field($model, 'dataCompra') ?>
+
+    <?= $form->field($model, 'tipo') ?>
 
     <?= $form->field($model, 'referencia') ?>
-
-    <?= $form->field($model, 'marca') ?>
-
-    <?= $form->field($model, 'datacompra') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

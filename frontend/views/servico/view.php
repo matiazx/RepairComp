@@ -4,9 +4,9 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model frontend\models\Servico */
+/* @var $model common\models\Servico */
 
-$this->title = $model->id;
+$this->title = $model->idservico;
 $this->params['breadcrumbs'][] = ['label' => 'Servicos', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
@@ -16,8 +16,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
+        <?= Html::a('Update', ['update', 'idservico' => $model->idservico], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Delete', ['delete', 'idservico' => $model->idservico], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => 'Are you sure you want to delete this item?',
@@ -29,13 +29,15 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
-            'descricaoservico',
+            'idservico',
+            'descricao',
             'tipo',
-            'gravidade',
-            'dataservico',
-            'fotografia',
             'estado',
+            'gravidade',
+            'data',
+            'idDispositivo',
+            'idRelatorio',
+            'id',
         ],
     ]) ?>
 

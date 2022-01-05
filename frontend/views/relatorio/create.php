@@ -3,7 +3,7 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model frontend\models\Relatorio */
+/* @var $model common\models\Relatorio */
 
 $this->title = 'Create Relatorio';
 $this->params['breadcrumbs'][] = ['label' => 'Relatorios', 'url' => ['index']];

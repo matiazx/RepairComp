@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel frontend\models\DispositivoSearch */
+/* @var $searchModel common\models\DispositivoSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Dispositivos';
@@ -26,10 +26,10 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+            'idDispositivo',
+            'dataCompra',
+            'tipo',
             'referencia',
-            'marca',
-            'datacompra',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
