@@ -4,35 +4,36 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\DispositivoSearch */
+/* @var $searchModel frontend\models\DispositivoSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Listagem de Dispositivos';
+$this->title = 'Dispositivos';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="dispositivo-index">
 
-    <h2><?= Html::encode($this->title) ?></h2>
+    <h1><?= Html::encode($this->title) ?></h1>
 
-    <p align="right">
-        <?= Html::a('+', ['create'], ['class' => 'btn btn-success']) ?>
+    <p>
+        <?= Html::a('Create Dispositivo', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
+
+    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
+        'filterModel' => $searchModel,
         'columns' => [
-            'dataCompra',
+            ['class' => 'yii\grid\SerialColumn'],
+
+            'id',
             'referencia',
-            [
-                'attribute' => 'estado',
-                'value' => function ($model) {
-                    return "";
-                },
-                'contentOptions' => function ($model) {
-                    return $model->getEstado();
-                }
-            ],
+            'marca',
+            'datacompra',
+
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
+
+
 </div>

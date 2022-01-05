@@ -2,10 +2,8 @@
 
 namespace frontend\controllers;
 
-use Yii;
-use app\models\Dispositivo;
-use app\models\DispositivoSearch;
-use yii\filters\AccessControl;
+use frontend\models\Dispositivo;
+use frontend\models\DispositivoSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -16,37 +14,21 @@ use yii\filters\VerbFilter;
 class DispositivoController extends Controller
 {
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     public function behaviors()
     {
-        return [
-            'access' => [
-                'class' => AccessControl::className(),
-                'rules' => [
-                    [
-                        'actions' => ['index', 'view', 'update', 'create', 'delete'],
-                        'allow' => false,
-                        'roles' => ['cliente'],
-                    ],
-                    [
-                        'actions' => ['index', 'view', 'update','create', 'delete'],
-                        'allow' => true,
-                        'roles' => ['tecnico'],
-                    ],
-                    [
-                        'actions' => ['index', 'view', 'update','create', 'delete'],
-                        'allow' => true,
-                        'roles' => ['gestor'],
-                    ],
-                    [
-                        'actions' => ['index', 'view', 'update','create', 'delete'],
-                        'allow' => true,
-                        'roles' => ['admin'],
+        return array_merge(
+            parent::behaviors(),
+            [
+                'verbs' => [
+                    'class' => VerbFilter::className(),
+                    'actions' => [
+                        'delete' => ['POST'],
                     ],
                 ],
-            ],
-        ];
+            ]
+        );
     }
 
     /**
@@ -56,7 +38,7 @@ class DispositivoController extends Controller
     public function actionIndex()
     {
         $searchModel = new DispositivoSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider = $searchModel->search($this->request->queryParams);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
@@ -66,7 +48,7 @@ class DispositivoController extends Controller
 
     /**
      * Displays a single Dispositivo model.
-     * @param integer $id
+     * @param int $id ID
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -86,11 +68,13 @@ class DispositivoController extends Controller
     {
         $model = new Dispositivo();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->idDispositivo]);
+        if ($this->request->isPost) {
+            if ($model->load($this->request->post()) && $model->save()) {
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
+        } else {
+            $model->loadDefaultValues();
         }
-
-        $model ->estado = 1;
 
         return $this->render('create', [
             'model' => $model,
@@ -100,7 +84,7 @@ class DispositivoController extends Controller
     /**
      * Updates an existing Dispositivo model.
      * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id
+     * @param int $id ID
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -108,8 +92,8 @@ class DispositivoController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->idDispositivo]);
+        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('update', [
@@ -120,7 +104,7 @@ class DispositivoController extends Controller
     /**
      * Deletes an existing Dispositivo model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $id
+     * @param int $id ID
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -134,7 +118,7 @@ class DispositivoController extends Controller
     /**
      * Finds the Dispositivo model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $id
+     * @param int $id ID
      * @return Dispositivo the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
