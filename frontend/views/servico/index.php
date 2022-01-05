@@ -12,7 +12,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="servico-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+
 
     <p>
         <?= Html::a('Create Servico', ['create'], ['class' => 'btn btn-success']) ?>
@@ -26,15 +26,34 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'idservico',
+            [
+                'attribute' => 'id',
+                'label' => 'Nome',
+                'value' => function ($model) {
+                    return $model->id;
+                },
+            ],
             'descricao',
-            'tipo',
-            'estado',
-            'gravidade',
-            //'data',
-            //'idDispositivo',
-            //'idRelatorio',
-            //'id',
+            [
+                'attribute' => 'tipo',
+                'value' => function ($model) {
+                    return $model->getTipo();
+                },
+            ],
+            [
+                'attribute' => 'gravidade',
+                'value' => function ($model) {
+                    return $model->getGravidade();
+                },
+            ],
+            'data',
+            //'fotografia',
+            [
+                'attribute' => 'estado',
+                'value' => function ($model) {
+                    return $model->getEstado();
+                },
+            ],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

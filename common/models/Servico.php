@@ -7,28 +7,24 @@ use Yii;
 /**
  * This is the model class for table "servico".
  *
- * @property int $idservico
- * @property string $descricao
- * @property int $tipo
- * @property int $estado
- * @property int $gravidade
- * @property string $data
- * @property int $idDispositivo
- * @property int|null $idRelatorio
  * @property int $id
- *
- * @property User $id0
- * @property Dispositivo $idDispositivo0
- * @property Relatorio[] $relatorios
+ * @property string $descricaoservico
+ * @property string $tipo
+ * @property string $gravidade
+ * @property string $data
+ * @property resource|null $fotografia
+ * @property string $estado
  */
 class Servico extends \yii\db\ActiveRecord
 {
-    public $estado_array = array('Starvation', 'Nao Resolvido', 'Em Resolucao', 'Resolvido');
-    public $tipo_array = array('Hardware','Software');
-    public $gravidade_array = array('Não Funcional','Funcional');
     /**
      * {@inheritdoc}
      */
+
+    public $estado_array = array('Nao Resolvido', 'Em Resolucao', 'Resolvido');
+    public $tipo_array = array('Hardware','Software');
+    public $gravidade_array = array('Não Funcional','Funcional');
+
     public static function tableName()
     {
         return 'servico';
@@ -40,12 +36,12 @@ class Servico extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['descricao', 'tipo', 'gravidade', 'data', 'idDispositivo', 'id'], 'required'],
-            [['tipo', 'estado', 'gravidade', 'idDispositivo', 'idRelatorio', 'id'], 'integer'],
+            [['descricaoservico', 'tipo', 'gravidade', 'dataservico', 'estado'], 'required'],
             [['data'], 'safe'],
-            [['descricao'], 'string', 'max' => 200],
-            [['id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['id' => 'id']],
-            [['idDispositivo'], 'exist', 'skipOnError' => true, 'targetClass' => Dispositivo::className(), 'targetAttribute' => ['idDispositivo' => 'idDispositivo']],
+            [['descricaoservico'], 'string', 'max' => 30],
+            [['tipo'], 'string', 'max' => 2],
+            [['gravidade', 'estado'], 'string', 'max' => 12],
+            [['fotografia'], 'string', 'max' => 10000],
         ];
     }
 
@@ -55,46 +51,14 @@ class Servico extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'idservico' => 'Idservico',
+            'id' => 'ID',
             'descricao' => 'Descricao',
             'tipo' => 'Tipo',
-            'estado' => 'Estado',
             'gravidade' => 'Gravidade',
-            'data' => 'Data',
-            'idDispositivo' => 'Id Dispositivo',
-            'idRelatorio' => 'Id Relatorio',
-            'id' => 'ID',
+            'data' => 'data',
+            'fotografia' => 'Fotografia',
+            'estado' => 'Estado',
         ];
-    }
-
-    /**
-     * Gets query for [[Id0]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
-    public function getId0()
-    {
-        return $this->hasOne(User::className(), ['id' => 'id']);
-    }
-
-    /**
-     * Gets query for [[IdDispositivo0]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
-    public function getIdDispositivo0()
-    {
-        return $this->hasOne(Dispositivo::className(), ['idDispositivo' => 'idDispositivo']);
-    }
-
-    /**
-     * Gets query for [[Relatorios]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
-    public function getRelatorios()
-    {
-        return $this->hasMany(Relatorio::className(), ['idServico' => 'idservico']);
     }
     public function getGravidade(){
         switch ($this->gravidade){
@@ -123,11 +87,19 @@ class Servico extends \yii\db\ActiveRecord
     public function getEstado(){
         switch ($this->estado){
             case 0:
-                return ['style' => 'background-color: orange'];
+                $estado = 'Nao Resolvido';
+                break;
             case 1:
-                return ['style' => 'background-color: yellow'];
+                $estado = 'Em Resolucao';
+                break;
             case 2:
-                return ['style' => 'background-color: green'];
+                $estado = 'Resolvido';
+                break;
         }
+        return $estado;
     }
+
+
+
+
 }

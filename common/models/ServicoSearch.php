@@ -58,17 +58,14 @@ class ServicoSearch extends Servico
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'idservico' => $this->idservico,
-            'tipo' => $this->tipo,
-            'estado' => $this->estado,
-            'gravidade' => $this->gravidade,
-            'data' => $this->data,
-            'idDispositivo' => $this->idDispositivo,
-            'idRelatorio' => $this->idRelatorio,
             'id' => $this->id,
+            'data' => $this->data,
+
         ]);
 
-        $query->andFilterWhere(['like', 'descricao', $this->descricao]);
+        $query->andFilterWhere(['like', 'tipo', $this->tipo])
+            ->andFilterWhere(['like', 'gravidade', $this->gravidade])
+            ->andFilterWhere(['like', 'estado', $this->estado]);
 
         return $dataProvider;
     }
