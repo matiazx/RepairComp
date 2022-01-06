@@ -50,9 +50,10 @@ AppAsset::register($this);
             ['label' => 'Serviços', 'url' => ['/servico/index']],
             ['label' => 'Dispositivo', 'url' => ['/dispositivo/index']],
             ['label' => 'Relatorios', 'url' => ['/relatorio/index']],
-            ['label' => 'Estatisticas', 'url' => ['/estatistica/index']],
             ['label' => 'Pecas', 'url' => ['/peca/index']],
-            ['label' => 'Encomendas', 'url' => ['/dispositivo/index']],
+            ['label' => 'Estatisticas', 'url' => ['/estatistica/index']],
+
+
 
         ];
         $menuItems[] = '<li>'
