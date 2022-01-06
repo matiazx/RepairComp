@@ -36,7 +36,7 @@ use yii\helpers\ArrayHelper;
                     <td> <?= $form->field($model, 'estado')->dropDownList($model->estado_array)->label(false) ?>
                 <tr>
 
-                    
+
 
                     <td></td><td align="right"><?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
             </table>
