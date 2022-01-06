@@ -52,10 +52,10 @@ class PecaController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView($idPeca)
+    public function actionView($id)
     {
         return $this->render('view', [
-            'model' => $this->findModel($idPeca),
+            'model' => $this->findModel($id),
         ]);
     }
 
@@ -70,7 +70,7 @@ class PecaController extends Controller
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'idPeca' => $model->idPeca]);
+                return $this->redirect(['view', 'id' => $model->idPeca]);
             }
         } else {
             $model->loadDefaultValues();
@@ -88,12 +88,12 @@ class PecaController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($idPeca)
+    public function actionUpdate($id)
     {
-        $model = $this->findModel($idPeca);
+        $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'idPeca' => $model->idPeca]);
+            return $this->redirect(['view', 'id' => $model->idPeca]);
         }
 
         return $this->render('update', [
@@ -108,9 +108,9 @@ class PecaController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($idPeca)
+    public function actionDelete($id)
     {
-        $this->findModel($idPeca)->delete();
+        $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
     }
@@ -122,7 +122,7 @@ class PecaController extends Controller
      * @return Peca the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($idPeca)
+    protected function findModel($id)
     {
         if (($model = Peca::findOne($id)) !== null) {
             return $model;

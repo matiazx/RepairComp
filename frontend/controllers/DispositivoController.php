@@ -73,7 +73,6 @@ class DispositivoController extends Controller
             return $this->redirect(['view', 'id' => $model->idDispositivo]);
         }
 
-        $model ->estado = 1;
 
         return $this->render('create', [
             'model' => $model,

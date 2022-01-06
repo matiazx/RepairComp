@@ -52,10 +52,10 @@ class RelatorioController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView($idRelatorio)
+    public function actionView($id)
     {
         return $this->render('view', [
-            'model' => $this->findModel($idRelatorio),
+            'model' => $this->findModel($id),
         ]);
     }
 
@@ -70,7 +70,7 @@ class RelatorioController extends Controller
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'idRelatorio' => $model->idRelatorio]);
+                return $this->redirect(['view', 'id' => $model->idRelatorio]);
             }
         } else {
             $model->loadDefaultValues();
@@ -88,12 +88,12 @@ class RelatorioController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($idRelatorio)
+    public function actionUpdate($id)
     {
-        $model = $this->findModel($idRelatorio);
+        $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'idRelatorio' => $model->idRelatorio]);
+            return $this->redirect(['view', 'id' => $model->idRelatorio]);
         }
 
         return $this->render('update', [
@@ -108,9 +108,9 @@ class RelatorioController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($idRelatorio)
+    public function actionDelete($id)
     {
-        $this->findModel($idRelatorio)->delete();
+        $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
     }
@@ -122,7 +122,7 @@ class RelatorioController extends Controller
      * @return Relatorio the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($idRelatorio)
+    protected function findModel($id)
     {
         if (($model = Relatorio::findOne($id)) !== null) {
             return $model;
