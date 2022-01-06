@@ -7,6 +7,7 @@ use common\models\DispositivoSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii;
 
 /**
  * DispositivoController implements the CRUD actions for Dispositivo model.
@@ -38,7 +39,7 @@ class DispositivoController extends Controller
     public function actionIndex()
     {
         $searchModel = new DispositivoSearch();
-        $dataProvider = $searchModel->search($this->request->queryParams);
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
@@ -48,14 +49,14 @@ class DispositivoController extends Controller
 
     /**
      * Displays a single Dispositivo model.
-     * @param int $idDispositivo Id Dispositivo
+     * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView($idDispositivo)
+    public function actionView($id)
     {
         return $this->render('view', [
-            'model' => $this->findModel($idDispositivo),
+            'model' => $this->findModel($id),
         ]);
     }
 
@@ -68,13 +69,11 @@ class DispositivoController extends Controller
     {
         $model = new Dispositivo();
 
-        if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'idDispositivo' => $model->idDispositivo]);
-            }
-        } else {
-            $model->loadDefaultValues();
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->idDispositivo]);
         }
+
+        $model ->estado = 1;
 
         return $this->render('create', [
             'model' => $model,
@@ -84,16 +83,16 @@ class DispositivoController extends Controller
     /**
      * Updates an existing Dispositivo model.
      * If update is successful, the browser will be redirected to the 'view' page.
-     * @param int $idDispositivo Id Dispositivo
+     * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($idDispositivo)
+    public function actionUpdate($id)
     {
-        $model = $this->findModel($idDispositivo);
+        $model = $this->findModel($id);
 
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'idDispositivo' => $model->idDispositivo]);
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->idDispositivo]);
         }
 
         return $this->render('update', [
@@ -104,13 +103,13 @@ class DispositivoController extends Controller
     /**
      * Deletes an existing Dispositivo model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param int $idDispositivo Id Dispositivo
+     * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($idDispositivo)
+    public function actionDelete($id)
     {
-        $this->findModel($idDispositivo)->delete();
+        $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
     }
@@ -118,11 +117,11 @@ class DispositivoController extends Controller
     /**
      * Finds the Dispositivo model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param int $idDispositivo Id Dispositivo
+     * @param integer $id
      * @return Dispositivo the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($idDispositivo)
+    protected function findModel($id)
     {
         if (($model = Dispositivo::findOne($id)) !== null) {
             return $model;
