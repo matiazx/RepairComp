@@ -52,7 +52,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value' => $model->getEstado(),
             ],
             'data',
-            'fotografia',
+            //'fotografia',
 
         ],
     ]) ?>

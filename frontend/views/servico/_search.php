@@ -25,7 +25,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'dataservico') ?>
 
-    <?php $form->field($model, 'fotografia') ?>
+    <?php // $form->field($model, 'fotografia') ?>
 
     <?php $form->field($model, 'estado') ?>
 

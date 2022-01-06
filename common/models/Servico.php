@@ -43,7 +43,6 @@ class Servico extends \yii\db\ActiveRecord
             [['descricao'], 'string', 'max' => 30],
             [['tipo'], 'string', 'max' => 2],
             [['gravidade', 'estado'], 'string', 'max' => 12],
-            [['fotografia'], 'string', 'max' => 10000],
         ];
     }
 
@@ -58,7 +57,7 @@ class Servico extends \yii\db\ActiveRecord
             'tipo' => 'Tipo',
             'gravidade' => 'Gravidade',
             'data' => 'data',
-            'fotografia' => 'Fotografia',
+            // 'fotografia' => 'Fotografia',
             'estado' => 'Estado',
         ];
     }

@@ -18,7 +18,7 @@ class ServicoSearch extends Servico
     {
         return [
             [['idservico', 'tipo', 'estado', 'gravidade', 'idDispositivo', 'idRelatorio', 'id'], 'integer'],
-            [['descricao', 'fotografia','data'], 'safe'],
+            [['descricao', 'data'], 'safe'],
         ];
     }
 
@@ -66,7 +66,7 @@ class ServicoSearch extends Servico
         $query->andFilterWhere(['like', 'descricao', $this->descricao])
             ->andFilterWhere(['like', 'tipo', $this->tipo])
             ->andFilterWhere(['like', 'gravidade', $this->gravidade])
-            ->andFilterWhere(['like', 'fotografia', $this->fotografia])
+            //->andFilterWhere(['like', 'fotografia', $this->fotografia])
             ->andFilterWhere(['like', 'estado', $this->estado]);
         return $dataProvider;
     }

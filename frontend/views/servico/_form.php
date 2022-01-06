@@ -36,9 +36,7 @@ use yii\helpers\ArrayHelper;
                     <td> <?= $form->field($model, 'estado')->dropDownList($model->estado_array)->label(false) ?>
                 <tr>
 
-                    <td align="left"><label>Fotografia</label>
-                    <td> <input type="file" accept="image/png, image/jpeg"> </td>
-                <tr>
+                    
 
                     <td></td><td align="right"><?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
             </table>

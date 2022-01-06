@@ -47,7 +47,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 },
             ],
             'data',
-            'fotografia',
+            //'fotografia',
             [
                 'attribute' => 'estado',
                 'value' => function ($model) {
