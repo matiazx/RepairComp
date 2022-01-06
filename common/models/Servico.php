@@ -2,6 +2,8 @@
 
 namespace common\models;
 
+use common\models\Dispositivo;
+use common\models\Relatorio;
 use common\models\User;
 use Yii;
 
@@ -15,6 +17,12 @@ use Yii;
  * @property string $data
  * @property resource|null $fotografia
  * @property string $estado
+ * * @property int $idDispositivo
+ * @property int $idUtilizador
+ * @property int|null $idRelatorio
+ *
+ * @property Dispositivo $idDispositivo0
+ * @property Relatorio[] $relatorios
  */
 class Servico extends \yii\db\ActiveRecord
 {
@@ -43,6 +51,8 @@ class Servico extends \yii\db\ActiveRecord
             [['descricao'], 'string', 'max' => 30],
             [['tipo'], 'string', 'max' => 2],
             [['gravidade', 'estado'], 'string', 'max' => 12],
+            [['idDispositivo'], 'exist', 'skipOnError' => true, 'targetClass' => Dispositivo::className(), 'targetAttribute' => ['idDispositivo' => 'idDispositivo']],
+
         ];
     }
 
@@ -59,7 +69,38 @@ class Servico extends \yii\db\ActiveRecord
             'data' => 'data',
             // 'fotografia' => 'Fotografia',
             'estado' => 'Estado',
+            'idDispositivo' => 'Id Dispositivo',
+            'idRelatorio' => 'Id Relatorio',
         ];
+    }
+    /**
+     * Gets query for [[IdDispositivo0]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getIdDispositivo0()
+    {
+        return $this->hasOne(Dispositivo::className(), ['idDispositivo' => 'idDispositivo']);
+    }
+
+    /**
+     * Gets query for [[Id0]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getId0()
+    {
+        return $this->hasOne(Utilizador::className(), ['id' => 'id']);
+    }
+
+    /**
+     * Gets query for [[Relatorios]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getRelatorios()
+    {
+        return $this->hasMany(Relatorio::className(), ['idServico' => 'idServico']);
     }
 
     public function getNome(){

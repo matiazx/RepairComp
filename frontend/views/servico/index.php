@@ -55,6 +55,14 @@ $this->params['breadcrumbs'][] = $this->title;
                 },
             ],
 
+            [
+                'attribute' => 'idDispositivo',
+                'label' => 'Dispositivo',
+                'value' => function ($model) {
+                    return $model->idDispositivo0->referencia;
+                },
+            ],
+
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>

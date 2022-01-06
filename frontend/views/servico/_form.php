@@ -1,5 +1,6 @@
 <?php
 
+use common\models\Dispositivo;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
@@ -30,7 +31,10 @@ use yii\helpers\ArrayHelper;
                     <td align="left"><label>Data</label>
                     <td> <?= $form->field($model, 'data')->textarea()->label(false) ?>
                 <tr>
-
+                <tr>
+                    <td align="left"><label>Dispositivo</label>
+                    <td><?= $form->field($model, 'idDispositivo')->dropDownList(ArrayHelper::map(Dispositivo::find()->all(), 'idDispositivo', 'referencia'), ['prompt' => 'Selecione dispositivo'])->label(false) ?>
+                <tr>
 
                     <td align="left"><label>Estado</label>
                     <td> <?= $form->field($model, 'estado')->dropDownList($model->estado_array)->label(false) ?>
