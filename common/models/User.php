@@ -30,7 +30,7 @@ class User extends ActiveRecord implements IdentityInterface
     const STATUS_INACTIVE = 9;
     const STATUS_ACTIVE = 10;
 
-    public $role = array(['Funcionario', 'Gestor','Cliente']);
+    public $role_array = array(['Funcionario', 'Gestor','Cliente']);
 
     /**
      * {@inheritdoc}
@@ -56,6 +56,7 @@ class User extends ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
+            [['username', 'email', 'role', 'status'], 'required'],
             ['status', 'default', 'value' => self::STATUS_INACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_INACTIVE, self::STATUS_DELETED]],
         ];
@@ -216,27 +217,34 @@ class User extends ActiveRecord implements IdentityInterface
     {
         return '';
     }
+    public function setRole($role)
+    {
+        $this->role = $role;
+    }
+    public function setRoleArray($role_array)
+    {
+        $this->role_array = $role_array;
+    }
 
 
     public function getRole(){
         switch ($this->role){
-            case 'Funcionario':
-                return 'Funcionario';
-            case 'Gestor':
-                return 'Gestor';
-            case 'Cliente':
-                return 'Cliente';
-            case 'Admin':
-                return 'Admin';
+            case 1:
+                $role= 'Funcionario';
+                break;
+            case 2:
+                $role= 'Gestor';
+                break;
+            case 3:
+                $role= 'Cliente';
+                break;
+            case 4:
+                $role= 'Admin';
+                break;
         }
-    }
-
-    public function getNome($id){
-
-        $user = User::find()->where(['id'=>$id])->one()->username;
-        var_dump((User::find()->where(['id'=>$id])->one())); die;
-        return $user;
 
     }
+
+
 
 }

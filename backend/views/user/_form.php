@@ -18,8 +18,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'password')->passwordInput() ?>
 
-    <?= $form->field($model, 'role')->dropDownList($role) ?>
-
+    <?= $form->field($model, 'role')->dropDownList($model->role, ['prompt' => 'Selecione o tipo'])->label(false) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

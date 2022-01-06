@@ -92,6 +92,9 @@ class UserController extends Controller
     {
         $model = $this->findModel($id);
 
+        $model->setRole($model->role, $model->id);
+
+
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }

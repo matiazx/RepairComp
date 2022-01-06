@@ -15,23 +15,19 @@ use yii\widgets\ActiveForm;
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'idservico') ?>
+    <?= $form->field($model, 'id') ?>
 
     <?= $form->field($model, 'descricao') ?>
 
     <?= $form->field($model, 'tipo') ?>
 
-    <?= $form->field($model, 'estado') ?>
-
     <?= $form->field($model, 'gravidade') ?>
 
-    <?php // echo $form->field($model, 'data') ?>
+    <?= $form->field($model, 'dataservico') ?>
 
-    <?php // echo $form->field($model, 'idDispositivo') ?>
+    <?php // $form->field($model, 'fotografia') ?>
 
-    <?php // echo $form->field($model, 'idRelatorio') ?>
-
-    <?php // echo $form->field($model, 'id') ?>
+    <?php $form->field($model, 'estado') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
