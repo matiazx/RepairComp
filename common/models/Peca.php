@@ -60,7 +60,7 @@ class Peca extends \yii\db\ActiveRecord
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getRelatoriopecas()
+    public function getPeca()
     {
         return $this->hasMany(Relatoriopeca::className(), ['idPeca' => 'idPeca']);
     }
