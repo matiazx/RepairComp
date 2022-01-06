@@ -30,8 +30,12 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'id',
                 'label' => 'Nome',
                 'value' => function ($model) {
+                //$users= new \backend\models\User();
+                //$user = $users->find()->where(['id'=>2])->all();
+                  //var_dump($user['attributes']);  die;
                     return $model->id;
                 },
+
             ],
             'descricao',
             [

@@ -72,6 +72,8 @@ class Servico extends \yii\db\ActiveRecord
         return $gravidade;
     }
 
+
+
     public function getTipo(){
         switch ($this->tipo){
             case 0:
