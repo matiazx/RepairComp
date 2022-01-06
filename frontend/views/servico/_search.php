@@ -17,7 +17,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'id') ?>
 
-    <?= $form->field($model, 'descricaoservico') ?>
+    <?= $form->field($model, 'descricao') ?>
 
     <?= $form->field($model, 'tipo') ?>
 
@@ -25,9 +25,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'dataservico') ?>
 
-    <?php // echo $form->field($model, 'fotografia') ?>
+    <?php $form->field($model, 'fotografia') ?>
 
-    <?php // echo $form->field($model, 'estado') ?>
+    <?php $form->field($model, 'estado') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

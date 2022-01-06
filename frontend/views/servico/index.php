@@ -30,10 +30,14 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'id',
                 'label' => 'Nome',
                 'value' => function ($model) {
+<<<<<<< HEAD
                 //$users= new \backend\models\User();
                 //$user = $users->find()->where(['id'=>2])->all();
                   //var_dump($user['attributes']);  die;
                     return $model->id;
+=======
+                    return $model->getNome();
+>>>>>>> 466d6176c6dcf9839389cde52e3fa7d1d05d2618
                 },
 
             ],
@@ -51,7 +55,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 },
             ],
             'data',
-            //'fotografia',
+            'fotografia',
             [
                 'attribute' => 'estado',
                 'value' => function ($model) {
