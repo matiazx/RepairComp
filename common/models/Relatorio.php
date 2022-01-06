@@ -14,12 +14,16 @@ use Yii;
  * @property string|null $descricao
  *
  * @property User $id0
- * @property Peca[] $idPecas
+ * @property Peca[] $idPeca
  * @property Servico $idServico0
- * @property Relatoriopeca[] $relatoriopecas
+
  */
 class Relatorio extends \yii\db\ActiveRecord
 {
+
+    public $descricaoA;
+    public $autor;
+    // public $listPecas;
     /**
      * {@inheritdoc}
      */
@@ -39,6 +43,8 @@ class Relatorio extends \yii\db\ActiveRecord
             [['descricao'], 'string', 'max' => 200],
             [['idServico'], 'exist', 'skipOnError' => true, 'targetClass' => Servico::className(), 'targetAttribute' => ['idServico' => 'idservico']],
             [['id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['id' => 'id']],
+            [['idPeca'], 'exist', 'skipOnError' => true, 'targetClass' => Peca::className(), 'targetAttribute' => ['idPeca' => 'idPeca']],
+
         ];
     }
 
@@ -53,6 +59,7 @@ class Relatorio extends \yii\db\ActiveRecord
             'idDispositivo' => 'Id Dispositivo',
             'id' => 'ID',
             'descricao' => 'Descricao',
+            'idPeca' => 'Peca',
         ];
     }
 
@@ -71,7 +78,7 @@ class Relatorio extends \yii\db\ActiveRecord
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getIdPecas()
+    public function getIdPeca()
     {
         return $this->hasMany(Peca::className(), ['idPeca' => 'idPeca'])->viaTable('relatoriopeca', ['idRelatorio' => 'idRelatorio']);
     }
@@ -84,6 +91,12 @@ class Relatorio extends \yii\db\ActiveRecord
     public function getIdServico0()
     {
         return $this->hasOne(Servico::className(), ['idservico' => 'idServico']);
+    }
+
+    public function getNome(){
+        $user = User::findOne($this->id);
+
+        return $user->username;
     }
 
     /**

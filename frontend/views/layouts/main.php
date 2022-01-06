@@ -51,7 +51,7 @@ AppAsset::register($this);
             ['label' => 'Dispositivo', 'url' => ['/dispositivo/index']],
             ['label' => 'Relatorios', 'url' => ['/relatorio/index']],
             ['label' => 'Pecas', 'url' => ['/peca/index']],
-            ['label' => 'Estatisticas', 'url' => ['/estatistica/index']],
+
 
 
 

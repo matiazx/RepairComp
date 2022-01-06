@@ -29,7 +29,7 @@ use yii\helpers\ArrayHelper;
                     <td><?= $form->field($model, 'gravidade')->dropDownList($model->gravidade_array, ['prompt' => 'Selecione a gravidade'])->label(false) ?>
                 <tr>
                     <td align="left"><label>Data</label>
-                    <td> <?= $form->field($model, 'data')->textarea()->label(false) ?>
+                    <td> <?= $form->field($model, 'data')->textarea(['disabled' => 'disabled'])->label(false) ?>
                 <tr>
                 <tr>
                     <td align="left"><label>Dispositivo</label>
@@ -45,7 +45,7 @@ use yii\helpers\ArrayHelper;
                     <td></td><td align="right"><?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
             </table>
 
-
+    <?= $form->field($model, 'idRelatorio')->hiddenInput()->label(false) ?>
 
             <?php ActiveForm::end(); ?>
 </div>

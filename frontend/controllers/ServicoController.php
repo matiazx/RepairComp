@@ -2,9 +2,11 @@
 
 namespace frontend\controllers;
 
+
 use common\models\Servico;
 use common\models\ServicoSearch;
 use yii\web\Controller;
+use yii\web\ForbiddenHttpException;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use Yii;
@@ -38,13 +40,28 @@ class ServicoController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new ServicoSearch();
-        $dataProvider = $searchModel->search($this->request->queryParams);
+        $request = Yii::$app->request;
+        $search = null;
 
-        return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
+        if($request->get('ServicoSearch')){
+            $search = $request->get('ServicoSearch');
+
+            $searchModel = new ServicoSearch();
+            $dataProvider = $searchModel->search(Yii::$app->request->queryParams, $search);
+
+            return $this->render('index', [
+                'searchModel' => $searchModel,
+                'dataProvider' => $dataProvider,
+            ]);
+        }else{
+            $searchModel = new ServicoSearch();
+            $dataProvider = $searchModel->search(Yii::$app->request->queryParams, $search);
+
+            return $this->render('index', [
+                'searchModel' => $searchModel,
+                'dataProvider' => $dataProvider,
+            ]);
+        }
     }
 
     /**
@@ -69,6 +86,7 @@ class ServicoController extends Controller
     {
         $model = new Servico();
         $model->data = date("Y-m-d H:i:s");
+        $model->id= Yii::$app->user->identity->id;
 
 
         if ($this->request->isPost) {
@@ -91,18 +109,27 @@ class ServicoController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($id)
+
+        public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        if (\Yii::$app->user->can('updateOwnServico', ['servico' => $model]) || array_keys(Yii::$app->authManager->getRolesByUser(Yii::$app->user->getId()))[0] == "admin"|| array_keys(Yii::$app->authManager->getRolesByUser(Yii::$app->user->getId()))[0] == "tecnico"|| array_keys(Yii::$app->authManager->getRolesByUser(Yii::$app->user->getId()))[0] == "gestor") {
+            if ($model->load(Yii::$app->request->post()) && $model->save()) {
+                if($model->estado == 2 && $model->idRelatorio == null){
+                    $this->redirect(['relatorio/create', 'idservico' => $model->idservico]);
+                }else{
+                    return $this->redirect(['view', 'id' => $model->idservico]);
+                }
+            }
 
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->render('update', [
+                'model' => $model,
+            ]);
+        }else{
+            throw new ForbiddenHttpException("You are not allowed to perform this action.");
         }
-
-        return $this->render('update', [
-            'model' => $model,
-        ]);
     }
+
 
     /**
      * Deletes an existing Servico model.
