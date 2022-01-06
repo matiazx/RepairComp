@@ -19,7 +19,7 @@ use yii\helpers\ArrayHelper;
             <table style="width: 300px">
                 <tr>
                 <td align="left"><label>Descricao</label>
-                <td> <?= $form->field($model, 'descricaoservico')->textarea(['maxlength' => true])->label(false) ?>
+                <td> <?= $form->field($model, 'descricao')->textarea(['maxlength' => true])->label(false) ?>
                 <tr>
                     <td align="left"><label>Tipo</label>
                     <td><?= $form->field($model, 'tipo')->dropDownList($model->tipo_array, ['prompt' => 'Selecione tipo'])->label(false) ?>
@@ -28,7 +28,7 @@ use yii\helpers\ArrayHelper;
                     <td><?= $form->field($model, 'gravidade')->dropDownList($model->gravidade_array, ['prompt' => 'Selecione a gravidade'])->label(false) ?>
                 <tr>
                     <td align="left"><label>Data</label>
-                    <td> <?= $form->field($model, 'dataservico')->textarea()->label(false) ?>
+                    <td> <?= $form->field($model, 'data')->textarea()->label(false) ?>
                 <tr>
 
 
