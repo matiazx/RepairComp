@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'id',
                 'label' => 'Nome',
                 'value' => function ($model) {
-                    return $model->id;
+                    return $model->getNome();
                 },
             ],
             'descricao',
@@ -47,7 +47,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 },
             ],
             'data',
-            //'fotografia',
+            'fotografia',
             [
                 'attribute' => 'estado',
                 'value' => function ($model) {

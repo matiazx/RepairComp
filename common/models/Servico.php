@@ -2,6 +2,7 @@
 
 namespace common\models;
 
+use common\models\User;
 use Yii;
 
 /**
@@ -24,6 +25,7 @@ class Servico extends \yii\db\ActiveRecord
     public $estado_array = array('Nao Resolvido', 'Em Resolucao', 'Resolvido');
     public $tipo_array = array('Hardware','Software');
     public $gravidade_array = array('Não Funcional','Funcional');
+    public $autor;
 
     public static function tableName()
     {
@@ -36,9 +38,9 @@ class Servico extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['descricaoservico', 'tipo', 'gravidade', 'dataservico', 'estado'], 'required'],
+            [['descricao', 'tipo', 'gravidade', 'data', 'estado'], 'required'],
             [['data'], 'safe'],
-            [['descricaoservico'], 'string', 'max' => 30],
+            [['descricao'], 'string', 'max' => 30],
             [['tipo'], 'string', 'max' => 2],
             [['gravidade', 'estado'], 'string', 'max' => 12],
             [['fotografia'], 'string', 'max' => 10000],
@@ -60,6 +62,13 @@ class Servico extends \yii\db\ActiveRecord
             'estado' => 'Estado',
         ];
     }
+
+    public function getNome(){
+        $user = User::findOne($this->id);
+
+        return $user->username;
+    }
+
     public function getGravidade(){
         switch ($this->gravidade){
             case 0:
